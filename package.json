@@ -1,0 +1,20 @@
+{
+    "name": "proflie-generator",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+      "start": "node index",
+      "watch": "nodemon index",
+      "test": "jest --watch"
+    },
+    "author": "",
+    "license": "MIT",
+    "dependencies": {
+      "chalk": "^2.4.1",
+      "inquirer": "8.2.4"
+    },
+    "devDependencies": {
+      "jest": "^24.8.0"
+    }
+  }
