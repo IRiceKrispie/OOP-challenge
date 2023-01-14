@@ -12,7 +12,8 @@
     "license": "MIT",
     "dependencies": {
       "chalk": "^2.4.1",
-      "inquirer": "8.2.4"
+      "inquirer": "8.2.4",
+      "node-html-parser": "6.1.4"
     },
     "devDependencies": {
       "jest": "^24.8.0"
