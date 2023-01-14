@@ -1,0 +1,9 @@
+function generateIntern(data){
+   return `<p>Intern Name: ${data.name}</p>`
+    
+}
+
+
+
+
+module.exports = generateIntern;

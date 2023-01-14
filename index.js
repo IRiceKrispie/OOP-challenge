@@ -1,15 +1,31 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
-const generateHTML = require('./src/generateHTML');
+const generateEngineer = require('./src/generateEngineer');
+const generateIntern = require('./src/generateIntern')
 const startHTML = require('./src/startHTML');
 //start to get info
-function getInfo(){
+function firstInfo(){
     inquirer
     .prompt([
         {
             type: 'input',
             name: 'name',
-            message: 'Employee name:'
+            message: 'Manager name:'
+        },
+        {
+            type: 'number',
+            name: 'id',
+            message: 'Input your manager id:'
+        },
+        {
+            type: 'number',
+            name: 'officeNumber',
+            message: 'What is your office number?'
+        },
+        {
+            type: 'input',
+            name: 'email',
+            message: 'What is your email?'
         },
         {
             type: 'list',
@@ -19,14 +35,54 @@ function getInfo(){
         },
     ])
     .then((data) => {
-        writeStartHTML();
-        console.log(data);
-        //employeeType(data);
+        writeStartHTML(data);
+        //console.log(data);
+        employeeType(data);
     });
 }
 
-function writeToFile(data){
-    fs.appendFile('./dist/index.html',generateHTML(data),function(err){
+
+function getInfo(){
+    inquirer.prompt([
+        {
+            type: 'list',
+            name: 'exit',
+            message: 'exit or new?',
+            choices:['exit', 'new'] 
+        }
+    ])
+    .then((data) => {
+        if (`${data.exit}` == 'exit'){
+            console.log("goodbye");
+            process.exit(0);
+        }
+        else if (`${data.exit}` == `new`){
+            inquirer.prompt([
+                {
+                    type: 'list',
+                    name: 'employeeType',
+                    message: 'What kind of employee?',
+                    choices:['engineer', 'intern']
+                },
+            ])
+            .then((data) => {
+                employeeType(data);
+            });
+        }
+    });
+}
+
+
+
+function writeEngineer(data, ){
+    fs.appendFile('./dist/index.html',generateEngineer(data),function(err){
+        if (err) throw err;
+        console.log('HTML made');
+    });
+}
+
+function writeIntern(data, ){
+    fs.appendFile('./dist/index.html',generateIntern(data),function(err){
         if (err) throw err;
         console.log('HTML made');
     });
@@ -37,12 +93,13 @@ function employeeType(data){
         inquirer.prompt([
             {
                 type: 'input',
-                name: 'engineerName',
+                name: 'name',
                 message: 'Engineer Name?'
             },
         ])
-        .then((data) => {
-            writeToFile(data);
+        .then((data, employeeType) => {
+            writeEngineer(data);
+            getInfo();
         });
     }
 
@@ -50,28 +107,29 @@ function employeeType(data){
         inquirer.prompt([
             {
                 type: 'input',
-                name: 'internName',
+                name: 'name',
                 message: 'Intern Name?'
             },
         ])
         .then((data) => {
-            writeToFile(data);
+            writeIntern(data);
+            getInfo();
         });
     }
     
 }
 
+//starts to write our html file with manager info
 function writeStartHTML(data){
     fs.writeFile('./dist/index.html',startHTML(data),function(err){
         if (err) throw err;
-        console.log('HTML made');
     });
 }
 
 
 
 function init(){
-    getInfo();
+    firstInfo();
 }
 
 init();
