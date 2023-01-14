@@ -3,6 +3,7 @@ const fs = require('fs');
 const generateEngineer = require('./src/generateEngineer');
 const generateIntern = require('./src/generateIntern')
 const startHTML = require('./src/startHTML');
+const endHTML = require('./src/endHTML');
 //start to get info
 function firstInfo(){
     inquirer
@@ -53,8 +54,7 @@ function getInfo(){
     ])
     .then((data) => {
         if (`${data.exit}` == 'exit'){
-            console.log("goodbye");
-            process.exit(0);
+            writeEndHTML(data);
         }
         else if (`${data.exit}` == `new`){
             inquirer.prompt([
@@ -74,17 +74,17 @@ function getInfo(){
 
 
 
-function writeEngineer(data, ){
+function writeEngineer(data){
     fs.appendFile('./dist/index.html',generateEngineer(data),function(err){
         if (err) throw err;
-        console.log('HTML made');
+        //console.log('HTML made');
     });
 }
 
-function writeIntern(data, ){
+function writeIntern(data){
     fs.appendFile('./dist/index.html',generateIntern(data),function(err){
         if (err) throw err;
-        console.log('HTML made');
+        //console.log('HTML made');
     });
 }
 
@@ -126,7 +126,11 @@ function writeStartHTML(data){
     });
 }
 
-
+function writeEndHTML(data){
+    fs.appendFile('./dist/index.html',endHTML(data),function(err){
+        if (err) throw err;
+    });
+}
 
 function init(){
     firstInfo();
