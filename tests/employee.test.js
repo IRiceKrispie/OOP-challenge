@@ -1,5 +1,6 @@
 const Employee = require('../lib/employee');
 const Engineer = require('../lib/engineer');
+const Intern = require('../lib/intern');
 
 describe("Employee", () => {
     describe("Initialization", () => {
@@ -26,6 +27,45 @@ describe("Engineer", () => {
             const engineer = new Engineer("Joe", 55, "joe@gmail.com", "zeebigbadkitty");
 
             expect(engineer.getRole()).toEqual("Engineer");
+        });
+    });
+
+    describe("getGitHub", () => {
+        it("GetGitHub should return github user name", () => {
+            const engineer = new Engineer("Joe", 55, "joe@gmail.com", "zeebigbadkitty");
+
+            expect(engineer.getGitHub()).toEqual("zeebigbadkitty");
+        });
+    });
+});
+
+describe("Intern", () => {
+    describe("Initialization", () => {
+        it("Should create intern object with name, id, email, and school", () => {
+            const intern = new Intern("Joe", 55, "joe@gmail.com", "UH");
+
+            expect(intern).toEqual({name:"Joe", id: 55, email: "joe@gmail.com", school: "UH"});
+        });
+
+        it("Should throw an error if not provided with a school", () => {
+            const intern = new Intern("Joe", 55, "joe@gmail.com");
+            expect(intern).toEqual({"email": "joe@gmail.com", "id": 55, "name": "Joe", "school": undefined});
+        });
+    });
+
+    describe("getRole", () => {
+        it("Intern Class should return 'Intern'", () => {
+            const intern = new Intern("Joe", 55, "joe@gmail.com", "UH");
+
+            expect(intern.getRole()).toEqual("Intern");
+        });
+    });
+
+    describe("getSchool", () => {
+        it("getSchool should return 'UH'", () => {
+            const intern = new Intern("Joe", 55, "joe@gmail.com", "UH");
+
+            expect(intern.getSchool()).toEqual("UH");
         });
     });
 });
