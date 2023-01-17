@@ -112,7 +112,7 @@ function employeeType(data){
                 message: 'Enter github user name'
             },
         ])
-        .then((data, employeeType) => {
+        .then((data) => {
             writeEngineer(data);
             getInfo();
         });
@@ -128,7 +128,7 @@ function employeeType(data){
             {
                 type: 'number',
                 name: 'id',
-                message: 'Enter Engineer id'
+                message: 'Enter Intern id'
             },
             {
                 type: 'input',

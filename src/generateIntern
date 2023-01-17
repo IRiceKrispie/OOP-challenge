@@ -1,9 +1,13 @@
+const Intern = require('../lib/intern');
 function generateIntern(data){
+   const intern = new Intern(data.name,data.id,data.email,data.school);
    return `<div class="member">
-           <p>Intern Name: ${data.name}</p>
-           <p>ID: ${data.id}</p>
-           <p>Email: ${data.email}</p>
-           <p>School: ${data.school}</p></div>`
+           <h2>${intern.getRole()}</h2>
+           <p>Intern Name: ${intern.getName()}</p>
+           <p>ID: ${intern.getId()}</p>
+           <p>Email: <a href="mailto:${intern.getEmail()}">${intern.getEmail()}</a></p>
+           <p>School: ${intern.getSchool()}</p></div>`
+           
     
 }
 

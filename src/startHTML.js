@@ -1,4 +1,6 @@
+const Manager = require('../lib/manager.js');
 function startHTML(data){
+    const manager = new Manager(data.name, data.id,data.email,data.officeNumber);
     return `<!DOCTYPE html>
     <html lang="en-US">
         <head>
@@ -12,10 +14,10 @@ function startHTML(data){
             <h1>My team</h1>
             <div class="team-members">
                 <div class="member">
-                <p>Manager: ${data.name}</p>
-                <p>ID: ${data.id}</p>
-                <p>Office Number: ${data.officeNumber}</p>
-                <p>Email: ${data.email}</p></div>`
+                <h3>${manager.getRole()}: ${manager.getName()}</h3>
+                <p>ID: ${manager.getId()}</p>
+                <p>Office Number: ${manager.getOfficeNumber()}</p>
+                <p>Email: <a href="mailto:${manager.getEmail()}">${manager.getEmail()}</a></p></div>`
 }
 
 module.exports = startHTML;
