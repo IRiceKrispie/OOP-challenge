@@ -1,6 +1,8 @@
-const Intern = require('../lib/intern');
-function generateIntern(data){
-   const intern = new Intern(data.name,data.id,data.email,data.school);
+const Intern = require('../lib/intern'); //import intern class
+function generateIntern(data){ //get data using inquierer from index
+   const intern = new Intern(data.name,data.id,data.email,data.school); //create intern object using info from data
+
+   //return html based on intern object created
    return `<div class="member">
            <h2>${intern.getRole()}</h2>
            <p>Intern Name: ${intern.getName()}</p>

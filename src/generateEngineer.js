@@ -1,6 +1,8 @@
-const Engineer = require('../lib/engineer')
+const Engineer = require('../lib/engineer') //import engineer class
 function generateEngineer(data){
-   const engineer = new Engineer(data.name,data.id,data.email,data.github);
+   const engineer = new Engineer(data.name,data.id,data.email,data.github); //get data using inquierer from index
+
+   //return html based on intern object created
    return `<div class="member">
            <h2>${engineer.getRole()}</h2>
            <p>Engineer Name: ${engineer.getName()}</p>
