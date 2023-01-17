@@ -11,10 +11,11 @@ function startHTML(data){
         <body>
             <h1>My team</h1>
             <div class="team-members">
-                <p>${data.name}</p>
-                <p>${data.id}</p>
-                <p>${data.officeNumber}</p>
-                <p>${data.email}</p>`
+                <div class="member">
+                <p>Manager: ${data.name}</p>
+                <p>ID: ${data.id}</p>
+                <p>Office Number: ${data.officeNumber}</p>
+                <p>Email: ${data.email}</p></div>`
 }
 
 module.exports = startHTML;

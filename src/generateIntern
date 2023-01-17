@@ -1,5 +1,9 @@
 function generateIntern(data){
-   return `<p>Intern Name: ${data.name}</p>`
+   return `<div class="member">
+           <p>Intern Name: ${data.name}</p>
+           <p>ID: ${data.id}</p>
+           <p>Email: ${data.email}</p>
+           <p>School: ${data.school}</p></div>`
     
 }
 

@@ -42,7 +42,7 @@ function firstInfo(){
     });
 }
 
-
+//get info based on selection in list
 function getInfo(){
     inquirer.prompt([
         {
@@ -73,21 +73,21 @@ function getInfo(){
 }
 
 
-
+//writes to our file based on selecting engineer
 function writeEngineer(data){
     fs.appendFile('./dist/index.html',generateEngineer(data),function(err){
         if (err) throw err;
         //console.log('HTML made');
     });
 }
-
+//writes to our file based on selecting intern
 function writeIntern(data){
     fs.appendFile('./dist/index.html',generateIntern(data),function(err){
         if (err) throw err;
         //console.log('HTML made');
     });
 }
-
+//controls what data we take in based on what user chose in list
 function employeeType(data){
     if(`${data.employeeType}` == 'engineer'){
         inquirer.prompt([
@@ -95,6 +95,21 @@ function employeeType(data){
                 type: 'input',
                 name: 'name',
                 message: 'Engineer Name?'
+            },
+            {
+                type: 'number',
+                name: 'id',
+                message: 'Enter Engineer id'
+            },
+            {
+                type: 'input',
+                name: 'email',
+                message: 'Enter email adress'
+            },
+            {
+                type: 'input',
+                name: 'github',
+                message: 'Enter github user name'
             },
         ])
         .then((data, employeeType) => {
@@ -109,6 +124,21 @@ function employeeType(data){
                 type: 'input',
                 name: 'name',
                 message: 'Intern Name?'
+            },
+            {
+                type: 'number',
+                name: 'id',
+                message: 'Enter Engineer id'
+            },
+            {
+                type: 'input',
+                name: 'email',
+                message: 'Enter email adress'
+            },
+            {
+                type: 'input',
+                name: 'school',
+                message: 'Enter school:'
             },
         ])
         .then((data) => {
@@ -125,13 +155,13 @@ function writeStartHTML(data){
         if (err) throw err;
     });
 }
-
+//writes the end part to our html
 function writeEndHTML(data){
     fs.appendFile('./dist/index.html',endHTML(data),function(err){
         if (err) throw err;
     });
 }
-
+//starts app
 function init(){
     firstInfo();
 }
