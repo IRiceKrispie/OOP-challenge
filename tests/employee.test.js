@@ -1,7 +1,7 @@
 const Employee = require('../lib/employee');
 const Engineer = require('../lib/engineer');
 const Intern = require('../lib/intern');
-
+//test to make sure employee starts correctly
 describe("Employee", () => {
     describe("Initialization", () => {
         it("Should create employee object with name, id, and email", () => {
@@ -12,7 +12,7 @@ describe("Employee", () => {
     });
 });
 
-
+//run tests to make sure engineer gets initialized correctly and the specific methods for that class are working
 describe("Engineer", () => {
     describe("Initialization", () => {
         it("Should create engineer object with name, id, email, and github username", () => {
@@ -39,6 +39,7 @@ describe("Engineer", () => {
     });
 });
 
+//run tests to make sure intern class initializes correctly and the getRole and getSchool methods are working
 describe("Intern", () => {
     describe("Initialization", () => {
         it("Should create intern object with name, id, email, and school", () => {

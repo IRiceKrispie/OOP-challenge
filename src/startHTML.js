@@ -1,6 +1,7 @@
-const Manager = require('../lib/manager.js');
-function startHTML(data){
-    const manager = new Manager(data.name, data.id,data.email,data.officeNumber);
+const Manager = require('../lib/manager.js'); //import manager class
+function startHTML(data){ //get our data from inquirer
+    const manager = new Manager(data.name, data.id,data.email,data.officeNumber); //create manager object
+    //return html using the manager information
     return `<!DOCTYPE html>
     <html lang="en-US">
         <head>

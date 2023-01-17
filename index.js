@@ -1,10 +1,11 @@
+//get all imports
 const inquirer = require('inquirer');
 const fs = require('fs');
 const generateEngineer = require('./src/generateEngineer');
 const generateIntern = require('./src/generateIntern')
 const startHTML = require('./src/startHTML');
 const endHTML = require('./src/endHTML');
-//start to get info
+//start to get info using inquirer. This function only runs at the start of our application
 function firstInfo(){
     inquirer
     .prompt([
@@ -42,7 +43,7 @@ function firstInfo(){
     });
 }
 
-//get info based on selection in list
+//get info based on selection in list. This function repeats based on if the user exits the app or makes another employee
 function getInfo(){
     inquirer.prompt([
         {
